@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Curriculum Vitae</title>
+
+    <style>
+        .table{
+            border: 1px solid black;
+            border-collapse: collapse;
+            margin: 1em;
+        }
+        h1{
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Adam Passaretti</h1>
+    </header>
+    <main>
+        <table class="table">
+
+            <tr>
+                <th>Skills:</th>
+            </tr>
+
+            <tr>
+                <!-- a ul is not allowed inside a tr -->
+                <td style="background-color: #424242;">
+
+                    <ul>
+                        <li>C</li>
+                        <li>C++</li>
+                        <li>UNIX</li>
+                        <li>Bash</li>
+                        <li>PHP</li>
+                    </ul>
+
+                </td>
+            </tr>
+        </table>
+
+        <table style="border: 1px solid black;  border-collapse: collapse;">
+
+            <tr>
+                <th>Experiences:</th>
+            </tr>
+
+            <tr>
+
+                <td style="background-color: #424242;">
+                    <ol style="list-style:none;">
+                        <li>2021-current: student at 42 Firenze</li>
+                        <li>2018-2021: worked as a server in restaurants</li>
+                    </ol>   
+                </td>
+
+            </tr>
+        </table>
+    </main>
+    <script src="popup.js">
+    </script>
+</body>
+</html>
