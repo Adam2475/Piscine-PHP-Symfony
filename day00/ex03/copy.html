@@ -8,39 +8,52 @@
     <style>
         table{
             margin:auto;
-            border-spacing: 10em 1em;
+            width: 1000px;
+            border-spacing: 2em 1em;
+            padding-right: 5em;
         }
         th{
             padding-bottom: 2em;
+            padding-left: 30px;
+             padding-right: 30px;
         }
         td{
             padding-bottom: 1em;
+            padding-left: 30px;
+            padding-right: 30px;
+
+        }
+        .bar{
+            width: 50%;
+        }
+        .row{
+            width:100%;
         }
     </style>
 </head>
 <body>
     <table class="table">
         <tr class="row">
-            <th>
+            <th style="width: 50%;">
                 <h1>Frontend</h1>
                 <hr>
             </th>
-            <th>
+            <th style="width: 50%;">
                 <h1>Backend</h1>
                 <hr>
             </th>   
         </tr>
         <tr class="row">
-            <td>
+            <td class="bar">
                 <span>HTML5</span>
-                <span>80%</span>
+                <span style="margin-left: 200px;">80%</span>
                 <div class="progress-bar">
                     <progress class="html5" value="80" max="100"></progress>
                 </div>
             </td>
-            <td>
+            <td class="bar">
                 <span>Python</span>
-                <span>75%</span>
+                <span style="margin-left: 175px;">75%</span>
                 <div class="progress-bar">
                     <progress class="html5" value="75" max="100"></progress>
                 </div>
@@ -48,32 +61,32 @@
             </td>
         </tr>
         <tr class="row">
-            <td>
+            <td class="bar">
                 <span>CSS3</span>
-                <span>60%</span>
+                <span style="margin-left: 150px;">60%</span>
                 <div class="progress-bar">
                     <progress class="html5" value="60" max="100"></progress>
                 </div>
             </td>
-            <td>
+            <td class="bar">
                 <span>PHP</span>
-                <span>65%</span>
+                <span style="margin-left: 160px;">65%</span>
                 <div class="progress-bar">
                         <progress class="html5" value="65" max="100"></progress>
                 </div>
             </td>
         </tr>
         <tr class="row">
-            <td>
+            <td class="bar">
                 <span>jQuery</span>
-                <span>50%</span>
+                <span style="margin-left: 100px;"> 50%</span>
                 <div class="progress-bar">
                     <progress class="html5" value="50" max="100"></progress>
                 </div>
             </td>
-            <td>
+            <td class="bar">
                 <span>Node.js</span>
-                <span>35%</span>
+                <span style="margin-left: 40px;">35%</span>
                 <div class="progress-bar">
                        <progress class="html5" value="35" max="100"></progress>
                 </div>
