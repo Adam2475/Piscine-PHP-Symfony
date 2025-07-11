@@ -5,13 +5,15 @@ include_once "HotBeverage.php";
 class Coffe extends HotBeverage
 {
     private $description;
-    private $comment;
+    private $commentaire;
 
-    function __construct($name, $price, $resistence)
+    function __construct($name, $price, $resistence, $descrtiption, $comment)
     {
-        $this->name = $name;
-        $this->price = $price;
-        $this->resistence = $resistence;
+        $this->nom = $name;
+        $this->prix = $price;
+        $this->resistance = $resistence;
+        $this->description = $description;
+        $this->commentaire = $comment;
     }
 
     public function getDescription() {
@@ -19,7 +21,7 @@ class Coffe extends HotBeverage
     }
 
     public function getComment() {
-        return $this->comment;
+        return $this->commentaire;
     }
 }
 

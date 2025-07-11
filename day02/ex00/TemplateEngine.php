@@ -4,11 +4,29 @@ class TemplateEngine
 {
     public function createFile($filename, $templateName, $parameters)
     {
-        $template = file_get_contents($templateName);
+        $file = fopen("$filename", "w");        
+        fwrite($file, 
+"<!DOCTYPE html>
+<html>
+    <head>
+        <title>{nom}</title>
+    </head>
+    <body>
+        <h1>{nom}</h1>
+        <p>
+            Auteur: <b>{auteur}</b><br />
+            Description: {description}<br />
+            Prix: <b>{prix} &euro;</b>
+        </p>
+    </body>
+</html>
+");
+
+        $template = file_get_contents("$filename");
 
         if (!($template))
             exit("template name not found!\n");
-
+        
         $i = 0;
         while ($i < count($parameters))
         {
