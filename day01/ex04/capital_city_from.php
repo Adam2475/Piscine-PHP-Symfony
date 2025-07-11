@@ -37,4 +37,9 @@ function capital_city_from(mixed $state)
     echo("\n");
 }
 
+
+echo capital_city_from('Oregon');
+echo capital_city_from('New Jersey');
+echo capital_city_from('Alabama');
+
 ?>

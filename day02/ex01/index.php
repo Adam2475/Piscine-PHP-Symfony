@@ -1,10 +1,12 @@
 <?php
 include "TemplateEngine.php";
 
-$dio = array(array("cane", "auteur"), array("gatto", "description"), array("piccione", "prix"));
+$array = array("cavallo", "pecora", "cane");
 
-$a = new TemplateEngine();
+$text = new Text($array);
 
-$a->createFile("test.html", "book_description.html", $dio);
+$obj = new TemplateEngine();
+
+$obj->createFile("create.html", $text);
 
 ?>
