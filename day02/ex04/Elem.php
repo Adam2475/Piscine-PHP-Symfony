@@ -1,35 +1,52 @@
 <?php
 
+include "MyException.php";
+
 class Elem
 {
     public $element;
     public string $content;
     public array $result = array();
+    public array $attributes;
+    public string $attribute_str = "";
     public $all = array("meta", "img", "hr", "br", "html", "head"
                         , "body", "title", "h1", "h2", "h3", "h4"
-                        , "h5", "h6", "p", "span", "div");
+                        , "h5", "h6", "p", "span", "div", "table"
+                        , "tr", "th", "td", "ul", "ol", "li");
     public array $prev_contents = array();
 
-    function __construct($element, string $content = "null")
+    function __construct($element, string $content = "null", array $attributes = [])
     {
         $this->content = $content;
 
-        // echo ($content . "\n");
-
         $this->element = $element;
+
+        $this->attributes = $attributes;
+
+        if ($attributes)
+        {
+            $this->attribute_to_string();
+        }
 
         $this->prev_contents[] = $this->content;
 
         if ($this->tag_found($this->element))
-            $this->result[] = array("<$this->element>", "</$this->element>");
-        else 
-            return print "not supported tag!\n";
+        {
+            if ($attributes)
+                $this->result[] = array("<$this->element" . " $this->attribute_str>", "</$this->element>");
+            else
+                $this->result[] = array("<$this->element>", "</$this->element>");
+        }
+        else
+        {
+            throw new InvalidTagException("$element tag not supported!");
+            return 1;
+        }
     }
 
     public function pushElement(Elem $elem)
     {
         $i = 0;
-        //echo ($elem->content . "\n");
         if ($elem->content != null)
         {
             foreach($elem->prev_contents as $contents)
@@ -41,6 +58,16 @@ class Elem
         {
             $this->result[] = array($elem->result[$i][0], $elem->result[$i][1]);
             $i++;
+        }
+    }
+
+    public function attribute_to_string()
+    {
+        $tmp;
+        foreach ($this->attributes as $attribute)
+        {
+            $tmp = array(key($this->attributes), '=', '"' , current($this->attributes) ,'"');
+            $this->attribute_str = implode("", $tmp);
         }
     }
 
@@ -63,15 +90,9 @@ class Elem
             fwrite($file, "\t");
         fwrite($file, "$front\n");
 
-        // print_r($this->prev_contents);
-
-        // $x = count($this->prev_contents) - 1;
-
-        // echo ($this->content . "\n");
         $tmp = $this->prev_contents[$i];
         if ($tmp != "null")
         {
-            // echo ($i. "\n");
             $b = $i;
             while ($b > 0)
             {
