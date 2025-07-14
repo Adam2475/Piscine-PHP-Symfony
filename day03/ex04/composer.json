@@ -1,0 +1,9 @@
+{
+    "name": "adapassa/weather",
+    "description": "minimal weather API integration",
+    "require": {
+        "php": ">=5.5.0",
+        "tcdent/php-restclient": "0.1.7"
+    },
+    "minimum-stability": "dev"
+}

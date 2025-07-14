@@ -1,0 +1,13 @@
+
+// using visualcrossing API
+
+1) create the package
+
+// require php & RESTclient
+
+// RESTclient
+Requires PHP 7.2 or above. 
+Use 0.1.7 for legacy versions of PHP.
+
+2) obtain the key:
+KL9TFTGMUP82AWEN5GPFNU2L4

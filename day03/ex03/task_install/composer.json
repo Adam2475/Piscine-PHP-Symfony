@@ -1,0 +1,7 @@
+{
+  "name": "example/composer-test",
+  "description": "A simple test for composer install vs update",
+  "require": {
+    "monolog/monolog": "1.0"
+  }
+}
