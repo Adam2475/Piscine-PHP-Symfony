@@ -1,0 +1,3 @@
+// project creation
+
+composer create-project symfony/framework-standard-edition d04 "^2.8"
