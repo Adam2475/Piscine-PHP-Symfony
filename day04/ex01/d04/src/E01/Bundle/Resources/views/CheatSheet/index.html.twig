@@ -1,0 +1,11 @@
+{% extends 'E01Bundle::base.html.twig' %}
+
+{% block content %}
+    <h1>Symfony Cheatsheets</h1>
+    <ul>
+        {% for cat in categories %}
+            <li><a href="{{ path('cheatsheet_category', {'category': cat}) }}">{{ cat }}</a></li>
+        {% endfor %}
+    </ul>
+{% endblock %}
+

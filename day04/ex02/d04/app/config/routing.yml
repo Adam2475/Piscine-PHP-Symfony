@@ -1,3 +1,7 @@
+e02:
+    resource: "@E02Bundle/Resources/config/routing.yml"
+    prefix:   /
+
 e00:
     resource: "@E00Bundle/Controller/"
     type:     annotation
