@@ -1,5 +1,5 @@
-e02:
-    resource: "@E02Bundle/Controller/"
+e03:
+    resource: "@E03Bundle/Controller/"
     type:     annotation
     prefix:   /
 

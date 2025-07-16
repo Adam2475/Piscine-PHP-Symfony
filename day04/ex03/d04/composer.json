@@ -7,7 +7,7 @@
         "psr-4": {
             "AppBundle\\": "src/AppBundle",
             "E00\\Bundle\\": "src/E00/Bundle",
-            "E02\\Bundle\\": "src/E02/Bundle"
+            "E03\\Bundle\\": "src/E03/Bundle"
         },
         "classmap": [ "app/AppKernel.php", "app/AppCache.php" ]
     },
@@ -21,7 +21,6 @@
         "incenteev/composer-parameter-handler": "~2.0",
         "sensio/distribution-bundle": "~4.0",
         "sensio/framework-extra-bundle": "^3.0.2",
-        "symfony/form": "^2.1",
         "symfony/monolog-bundle": "^3.0.2",
         "symfony/swiftmailer-bundle": "~2.3,>=2.3.10",
         "symfony/symfony": "2.8.*",

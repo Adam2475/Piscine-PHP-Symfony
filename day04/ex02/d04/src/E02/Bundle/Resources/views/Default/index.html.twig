@@ -1,1 +1,15 @@
-Hello World!
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Submit a Message</h1>
+
+    {{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
+        {{ form_row(form.message) }}
+        {{ form_row(form.timestamp) }}
+        <button type="submit">Submit</button>
+    {{ form_end(form) }}
+
+    {% if last_line %}
+        <p><strong>Last submitted:</strong> {{ last_line }}</p>
+    {% endif %}
+{% endblock %}
