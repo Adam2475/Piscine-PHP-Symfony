@@ -1,1 +1,16 @@
-Hello World!
+<html>
+
+<body>
+
+{% if message %}
+    {{ message }}
+{% endif %}
+
+<a href="{{ path('sql_symfony', {'create': 1}) }}">
+    <button>Create Table</button>
+</a>
+
+</body>
+
+
+</html>
