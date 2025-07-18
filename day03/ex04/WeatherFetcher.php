@@ -7,7 +7,7 @@ class WeatherFetcher
     private $apiKey;
     private $city;
 
-    public function __construct($apiKey, $city = 'Florence')
+    public function __construct($apiKey, $city)
     {
         $this->apiKey = $apiKey;
         $this->city = $city;
@@ -17,6 +17,7 @@ class WeatherFetcher
     {
         $client = new RestClient();
 
+        // unit group : Celsius
         $params = [
             'unitGroup' => 'metric',
             'key' => $this->apiKey,

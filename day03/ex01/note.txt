@@ -1,4 +1,0 @@
-// for each task, after setting up the 
-// correct composer.json, you need to run:
-
-composer install
