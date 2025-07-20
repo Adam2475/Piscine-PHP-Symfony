@@ -1,0 +1,9 @@
+services:
+    ex03.schema_creator:
+        class: ex03\Bundle\Service\SchemaCreator
+        arguments: ["@doctrine.orm.entity_manager"]
+
+    # ex03.schema_create_command:
+    #       class: ex03\Bundle\Command\SchemaCreateCommand
+    #       tags:
+    #           - { name: console.command }

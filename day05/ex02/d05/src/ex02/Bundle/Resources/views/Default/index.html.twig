@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Submit a User</h1>
+
+    {{ form_start(form) }}
+        {{ form_row(form.username) }}
+        {{ form_row(form.name) }}
+        {{ form_row(form.email) }}
+        {{ form_row(form.enable) }}
+        {{ form_row(form.birthdate) }}
+        {{ form_row(form.address) }}
+        <button type="submit">Submit</button>
+    {{ form_end(form) }}
+
+    <h1>Users List</h1>
+
+    <table border="1" cellpadding="5" cellspacing="0">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Username</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Enabled</th>
+                <th>Birthdate</th>
+                <th>Address</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for user in users %}
+                <tr>
+                    <td>{{ user.id }}</td>
+                    <td>{{ user.username }}</td>
+                    <td>{{ user.name }}</td>
+                    <td>{{ user.email }}</td>
+                    <td>{{ user.enable ? 'Yes' : 'No' }}</td>
+                    <td>{{ user.birthdate|date('Y-m-d') }}</td>
+                    <td>{{ user.address }}</td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="7">No users found.</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

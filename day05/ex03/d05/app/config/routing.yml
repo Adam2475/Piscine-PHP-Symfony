@@ -1,0 +1,20 @@
+# ex03:
+#     resource: "@ex03Bundle/Controller/"
+#     type:     annotation
+#     prefix:   /
+
+# app:
+#     resource: '@AppBundle/Controller/'
+#     type: annotation
+
+ex03_homepage:
+    path: /
+    defaults: { _controller: ex03Bundle:User:new }
+
+ex03_new:
+    path: /new
+    defaults: { _controller: ex03Bundle:User:new }
+
+ex03_list:
+    path: /list
+    defaults: { _controller: ex03Bundle:User:list }

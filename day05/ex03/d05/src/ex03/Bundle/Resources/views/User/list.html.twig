@@ -1,0 +1,17 @@
+<h1>Users</h1>
+<table border="1">
+    <tr>
+        <th>ID</th><th>Username</th><th>Name</th><th>Email</th><th>Enable</th><th>Birthdate</th><th>Address</th>
+    </tr>
+    {% for user in users %}
+        <tr>
+            <td>{{ user.id }}</td>
+            <td>{{ user.username }}</td>
+            <td>{{ user.name }}</td>
+            <td>{{ user.email }}</td>
+            <td>{{ user.enable ? 'Yes' : 'No' }}</td>
+            <td>{{ user.birthdate|date('Y-m-d') }}</td>
+            <td>{{ user.address }}</td>
+        </tr>
+    {% endfor %}
+</table>
