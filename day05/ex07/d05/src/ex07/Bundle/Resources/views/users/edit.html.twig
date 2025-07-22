@@ -1,0 +1,8 @@
+<h1>Update User: {{ user.username }}</h1>
+
+{{ form_start(form) }}
+    {{ form_widget(form) }}
+    <button type="submit">Save Changes</button>
+{{ form_end(form) }}
+
+<a href="{{ path('orm_update') }}">← Back to user list</a>
