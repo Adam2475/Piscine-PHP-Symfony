@@ -1,1 +1,17 @@
-Hello World!
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    {% for label, flashes in app.session.flashbag.all %}
+        {% for message in flashes %}
+            <div class="alert alert-{{ label }}">
+                {{message}}
+            </div>
+        {% endfor %}
+    {% endfor %}
+
+    <p> hello from the main page </p>
+
+    <button><a href="/register">Register</a></button>
+
+{% endblock %}
