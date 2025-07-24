@@ -12,6 +12,13 @@
 
     <p> hello from the main page </p>
 
-    <button><a href="/register">Register</a></button>
+    {% if user != null %}
+        <p>Welcome, {{ app.user.username }}!</p>
+        <a href=" {{ path('logout') }} ">Logout</a>
+    {% else %}
+        <button><a href="/login">Login</a></button>
+        <button><a href="/register">Register</a></button>
+    {% endif %}
+
 
 {% endblock %}

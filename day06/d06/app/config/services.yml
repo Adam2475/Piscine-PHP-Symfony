@@ -7,3 +7,7 @@ services:
     E01.RegisterService:
         class: E01\Bundle\Services\RegisterService
         arguments: ['@form.factory']
+
+    E01.LoginService:
+        class: E01\Bundle\Services\LoginService
+        arguments: ['@form.factory']

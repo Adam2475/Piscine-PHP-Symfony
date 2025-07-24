@@ -23,6 +23,16 @@ class DefaultController extends Controller
      */
     public function indexAction()
     {
-        return $this->render('E01Bundle:Default:index.html.twig');
+        $user = null;
+        if ($this->get('security.token_storage')->getToken() && $this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_FULLY'))  
+        {
+           $user = $this->getUser(); 
+        }
+        
+        // var_dump($user);
+
+        return $this->render('E01Bundle:Default:index.html.twig', [
+            'user' => $user,
+        ]);
     }
 }
