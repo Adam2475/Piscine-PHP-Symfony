@@ -1,0 +1,30 @@
+
+<br>
+
+    {% for label, flashes in app.session.flashbag.all %}
+        {% for message in flashes %}
+            <div class="alert alert-{{ label }}">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endfor %}
+
+<p> click to create the table </p>
+
+<button><a href="/create">create</a></button>
+
+<p> click to update the table </p>
+
+<button><a href="/update">update</a></button>
+
+<p> create addresses and bank accounts </p>
+
+<button><a href="/tables">create</a></button>
+
+<p> add relationships </p>
+
+<button><a href="/relation">create</a></button>
+
+<p> delete all </p>
+
+<button><a href="/delete">delete</a></button>
