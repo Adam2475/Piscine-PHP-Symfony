@@ -1,0 +1,5 @@
+vite, costruzioni
+lampada, illuminazione
+donna, punchball
+cane, compagnia
+gatto, da mischia

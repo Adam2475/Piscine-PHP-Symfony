@@ -1,0 +1,39 @@
+<table>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Created At</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for item in ormItems %}
+        <tr>
+            <td>{{ item.name }}</td>
+            <td>{{ item.function }}</td>
+        </tr>
+    {% else %}
+        <tr><td colspan="3">No items found</td></tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+<table>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Created At</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for item in sqlItems %}
+        <tr>
+            <td>{{ item.name }}</td>
+            <td>{{ item.unction }}</td>
+        </tr>
+    {% else %}
+        <tr><td colspan="3">No items found</td></tr>
+    {% endfor %}
+    </tbody>
+</table>
