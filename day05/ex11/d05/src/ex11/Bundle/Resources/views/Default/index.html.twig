@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Persons List</h1>
+
+    {# Filter and Sort Form #}
+    <form method="GET" action="{{ path('homepage') }}" class="form-inline" style="margin-bottom: 20px;">
+        
+        {# Filter by Birthdate #}
+        <div class="form-group">
+            <label for="filter_date">Born before:</label>
+            <input type="date" name="filter_date" id="filter_date" value="{{ current_filter_date }}" class="form-control">
+        </div>
+
+        {# Sort Order for Name #}
+        <div class="form-group" style="margin-left: 15px;">
+            <label for="sort_order">Sort Name:</label>
+             <select name="sort_order" id="sort_order" class="form-control">
+                <option value="ASC" {{ 'ASC' == current_sort_order ? 'selected' : '' }}>Ascending (A-Z)</option>
+                <option value="DESC" {{ 'DESC' == current_sort_order ? 'selected' : '' }}>Descending (Z-A)</option>
+            </select>
+        </div>
+
+        <button type="submit" style="margin-left: 15px;">Apply</button>
+    </form>
+
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Surname</th>
+                <th>Birthdate</th>
+                <th>Marital Status</th>
+                <th>Address</th>
+                <th>Enabled</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for person in persons %}
+                <tr>
+                    <td>{{ person.name }}</td>
+                    <td>{{ person.surname }}</td>
+                    <td>{{ person.birthdate|date('F j, Y') }}</td>
+                    <td>{{ person.maritalStatus|capitalize }}</td>
+                    <td>{{ person.address|default('N/A') }}</td>
+                    <td>{{ person.enable ? 'Yes' : 'No' }}</td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="6">No persons found matching the criteria.</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

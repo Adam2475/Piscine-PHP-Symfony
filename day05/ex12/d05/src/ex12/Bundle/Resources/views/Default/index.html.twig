@@ -1,0 +1,41 @@
+<form method="get">
+    <label for="birthdate">Birthdate After:</label>
+    <input type="date" name="birthdate" value="{{ app.request.get('birthdate') }}"/>
+
+    <label for="sort">Sort by:</label>
+    <select name="sort">
+        <option value="">-- Select --</option>
+        <option value="name" {% if app.request.get('sort') == 'name' %}selected{% endif %}>Name</option>
+        <option value="surname" {% if app.request.get('sort') == 'surname' %}selected{% endif %}>Surname</option>
+        <option value="birthdate" {% if app.request.get('sort') == 'birthdate' %}selected{% endif %}>Birthdate</option>
+    </select>
+
+    <button type="submit">Apply</button>
+</form>
+
+<table border="1">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Surname</th>
+            <th>Email</th>
+            <th>Birthdate</th>
+            <th>City</th> {# from addresses #}
+            <th>IBAN</th> {# from bank_accounts #}
+        </tr>
+    </thead>
+    <tbody>
+        {% for person in persons %}
+            <tr>
+                <td>{{ person.name }}</td>
+                <td>{{ person.surname }}</td>
+                <td>{{ person.email }}</td>
+                <td>{{ person.birthdate|date('Y-m-d') }}</td>
+                <td>{{ person.addresses ? person.addresses.address : 'N/A' }}</td>
+                {#  <td>{{ person.bank_accounts  }}</td> #}
+            </tr>
+        {% else %}
+            <tr><td colspan="6">No results.</td></tr>
+        {% endfor %}
+    </tbody>
+</table>

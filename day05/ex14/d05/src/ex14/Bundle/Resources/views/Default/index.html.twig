@@ -1,0 +1,27 @@
+<h1>SQL Injection Demo - Symfony 2.8</h1>
+
+<p>Status: {{ status }}</p>
+
+<form id="vuln-form" method="POST" action="{{ path('homepage') }}">
+    <label for="name">Enter Name:</label>
+    <input type="text" id="name" name="name" />
+    <button type="submit">Submit</button>
+</form>
+
+<h2>Entries in Database:</h2>
+<ul>
+    {% for row in rows %}
+        <li>{{ row.id }} - {{ row.name }}</li>
+    {% else %}
+        <li>No entries found.</li>
+    {% endfor %}
+</ul>
+
+<script>
+// SQL Injection payload via JavaScript
+document.getElementById('vuln-form').addEventListener('submit', function(e) {
+    var field = document.getElementById('name');
+    // Example injection closes the quote and injects a second INSERT query
+    field.value = "Injected'); INSERT INTO vulnerable_form (name) VALUES ('Hacked";
+});
+</script>

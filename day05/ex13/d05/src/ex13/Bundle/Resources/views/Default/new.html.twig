@@ -1,0 +1,87 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+    <h1>{{ form.vars.value.id ? 'Edit Employee' : 'Create New Employee' }}</h1>
+
+    {% for flash_message in app.session.flashBag.get('success') %}
+        <div class="alert alert-success">{{ flash_message }}</div>
+    {% endfor %}
+
+    {% for flash_message in app.session.flashBag.get('error') %}
+        <div class="alert alert-danger">{{ flash_message }}</div>
+    {% endfor %}
+
+    {{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
+        {{ form_errors(form) }}
+
+        <div>
+            {{ form_label(form.firstname) }}
+            {{ form_widget(form.firstname) }}
+            {{ form_errors(form.firstname) }}
+        </div>
+
+        <div>
+            {{ form_label(form.lastname) }}
+            {{ form_widget(form.lastname) }}
+            {{ form_errors(form.lastname) }}
+        </div>
+
+        <div>
+            {{ form_label(form.email) }}
+            {{ form_widget(form.email) }}
+            {{ form_errors(form.email) }}
+        </div>
+
+        <div>
+            {{ form_label(form.birthdate) }}
+            {{ form_widget(form.birthdate) }}
+            {{ form_errors(form.birthdate) }}
+        </div>
+
+        <div>
+            {{ form_label(form.active) }}
+            {{ form_widget(form.active) }}
+            {{ form_errors(form.active) }}
+        </div>
+
+        <div>
+            {{ form_label(form.employedSince) }}
+            {{ form_widget(form.employedSince) }}
+            {{ form_errors(form.employedSince) }}
+        </div>
+
+        <div>
+            {{ form_label(form.employedUntil) }}
+            {{ form_widget(form.employedUntil) }}
+            {{ form_errors(form.employedUntil) }}
+        </div>
+
+        <div>
+            {{ form_label(form.hours) }}
+            {{ form_widget(form.hours) }}
+            {{ form_errors(form.hours) }}
+        </div>
+
+        <div>
+            {{ form_label(form.salary) }}
+            {{ form_widget(form.salary) }}
+            {{ form_errors(form.salary) }}
+        </div>
+
+        <div>
+            {{ form_label(form.position) }}
+            {{ form_widget(form.position) }}
+            {{ form_errors(form.position) }}
+        </div>
+
+        <div>
+            {{ form_label(form.manager) }}
+            {{ form_widget(form.manager) }}
+            {{ form_errors(form.manager) }}
+        </div>
+
+        <div>
+            <button type="submit">{{ form.vars.value.id ? 'Update' : 'Create' }}</button>
+        </div>
+    {{ form_end(form) }}
+{% endblock %}
