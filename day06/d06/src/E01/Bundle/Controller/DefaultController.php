@@ -29,6 +29,7 @@ class DefaultController extends Controller
            $user = $this->getUser(); 
         }
         
+        // print_r($user->getRoles());
         // var_dump($user);
 
         return $this->render('E01Bundle:Default:index.html.twig', [

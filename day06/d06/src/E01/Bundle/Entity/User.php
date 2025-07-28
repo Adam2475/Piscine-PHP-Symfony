@@ -47,6 +47,11 @@ class User implements UserInterface
 
 
     /**
+     * @ORM\Column(type="json_array")
+     */
+    private $roles = [];
+
+    /**
      * Get id
      *
      * @return int
@@ -128,10 +133,30 @@ class User implements UserInterface
         return $this->email;
     }
 
+    // public function getRoles()
+    // {
+    //     return $this->roles;
+    // }
 
+    public function setRoles(array $roles)
+    {
+        $this->roles = $roles;
+    }
+
+    public function addRole($role)
+    {
+        if (!in_array($role, $this->roles)) {
+            $this->roles[] = strtoupper($role);
+        }
+    }
+
+    // public function getRoles()
+    // {
+    //     return ['ROLE_USER']; // or any roles you assign
+    // }
     public function getRoles()
     {
-        return ['ROLE_USER']; // or any roles you assign
+        return $this->roles ?: ['ROLE_USER'];
     }
 
     public function getSalt()

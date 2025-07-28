@@ -1,0 +1,31 @@
+<h1>User List</h1>
+
+{% for message in app.session.flashbag.get('error') %}
+    <div style="color:red;">{{ message }}</div>
+{% endfor %}
+
+{% for message in app.session.flashbag.get('success') %}
+    <div style="color:green;">{{ message }}</div>
+{% endfor %}
+
+<table>
+    <thead>
+        <tr><th>ID</th><th>Email</th><th>Roles</th><th>Actions</th></tr>
+    </thead>
+    <tbody>
+    {% for user in users %}
+        <tr>
+            <td>{{ user.id }}</td>
+            <td>{{ user.email }}</td>
+            <td>{{ user.roles|join(', ') }}</td>
+            <td>
+                {% if user.id != app.user.id %}
+                    <a href="{{ path('admin_delete_user', {'id': user.id}) }}" onclick="return confirm('Are you sure?');">Delete</a>
+                {% else %}
+                    <em>(you)</em>
+                {% endif %}
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
