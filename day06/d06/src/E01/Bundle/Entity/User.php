@@ -4,6 +4,7 @@ namespace E01\Bundle\Entity;
 
 // importing security interface
 use Symfony\Component\Security\Core\User\UserInterface;
+use E03\Bundle\Entity\Post;
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -50,6 +51,12 @@ class User implements UserInterface
      * @ORM\Column(type="json_array")
      */
     private $roles = [];
+
+
+    /**
+     *@ORM\OneToMany(targetEntity="E03\Bundle\Entity\Post", mappedBy="author", cascade={"persist", "remove"})
+     */
+    private $posts;
 
     /**
      * Get id

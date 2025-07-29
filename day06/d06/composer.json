@@ -6,7 +6,10 @@
     "autoload": {
         "psr-4": {
             "AppBundle\\": "src/AppBundle",
-            "E01\\Bundle\\": "src/E01/Bundle"
+            "E01\\Bundle\\": "src/E01/Bundle",
+            "E02\\Bundle\\": "src/E02/Bundle",
+            "E03\\Bundle\\": "src/E03/Bundle"
+            
         },
         "classmap": [ "app/AppKernel.php", "app/AppCache.php" ]
     },

@@ -1,15 +1,12 @@
 <?php
 
-namespace E01\Bundle\Controller;
+namespace E02\Bundle\Controller;
 
 use E01\Bundle\Entity\User;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\RedirectResponse;
-
-// * @Security("has_role('ROLE_ADMIN')")
-
 
 /**
  * @Route("/admin")

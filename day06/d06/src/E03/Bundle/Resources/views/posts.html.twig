@@ -1,0 +1,24 @@
+{% block posts %}
+    <h2>Recent Posts</h2>
+
+    {% if app.user %}
+        <a href="{{ path('post_new') }}">
+            <button>Create New Post</button>
+        </a>
+    {% endif %}
+
+    {% for post in posts %}
+        <div class="post">
+            {% if app.user %}
+                <h3><a href="{{ path('post_show', {id: post.id}) }}">{{ post.title }}</a></h3>
+            {% else %}
+                <h3>{{ post.title }}</h3>
+            {% endif %}
+            <p>{{ post.content|length > 100 ? post.content|slice(0, 100) ~ '...' : post.content }}</p>
+            <small>Created at: {{ post.created|date('Y-m-d H:i') }}</small>
+            <hr>
+        </div>
+    {% else %}
+        <p>No posts found.</p>
+    {% endfor %}
+{% endblock %}

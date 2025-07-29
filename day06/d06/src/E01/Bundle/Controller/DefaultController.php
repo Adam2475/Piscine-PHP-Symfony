@@ -7,11 +7,9 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 
 // importing user entity
 use E01\Bundle\Entity\User;
-
+use E03\Bundle\Entity\Post;
 // importing services
 use E01\Bundle\Services\RegisterService;
-
-// use E01\Bundle\Controller\UserController;
 
 class DefaultController extends Controller
 {
@@ -28,12 +26,14 @@ class DefaultController extends Controller
         {
            $user = $this->getUser(); 
         }
-        
-        // print_r($user->getRoles());
-        // var_dump($user);
+
+        $posts = $this->getDoctrine()
+              ->getRepository(Post::class)
+              ->findBy([], ['created' => 'DESC']);
 
         return $this->render('E01Bundle:Default:index.html.twig', [
             'user' => $user,
+            'posts' => $posts,
         ]);
     }
 }

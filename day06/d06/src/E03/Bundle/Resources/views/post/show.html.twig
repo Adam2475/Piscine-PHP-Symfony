@@ -1,0 +1,10 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>{{ post.title }}</h1>
+    <p>{{ post.content }}</p>
+    <p><small>Created: {{ post.created|date('Y-m-d H:i') }}</small></p>
+    <p>Author: {{ post.author.username }}</p>
+
+    <a href="{{ path('homepage') }}">Back to homepage</a>
+{% endblock %}
