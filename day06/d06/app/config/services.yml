@@ -11,3 +11,7 @@ services:
     E01.LoginService:
         class: E01\Bundle\Services\LoginService
         arguments: ['@form.factory']
+
+    E04.SessionService:
+        class: E04\Bundle\Services\SessionService
+        #arguments: ['@form.factory']

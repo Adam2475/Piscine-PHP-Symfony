@@ -10,6 +10,11 @@
         {% endfor %}
     {% endfor %}
 
+    {% if anonymousName %}
+        <p>{{ anonymousName }}</p>
+        <p>Time since last request: {{ secondsSinceLastRequest }} seconds</p>
+    {% endif %}
+
     <p> hello from the main page </p>
 
     {% if user != null %}
