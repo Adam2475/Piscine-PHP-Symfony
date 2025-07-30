@@ -20,6 +20,7 @@
     {% if user != null %}
         <p>Welcome, {{ app.user.username }}!</p>
         <a href=" {{ path('logout') }} ">Logout</a>
+        <p>Reputation: {{ reputation }}</p>
     {% else %}
         <button><a href="/login">Login</a></button>
         <button><a href="/register">Register</a></button>

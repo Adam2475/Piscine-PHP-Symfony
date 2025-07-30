@@ -11,6 +11,7 @@ use E03\Bundle\Entity\Post;
 // importing services
 use E01\Bundle\Services\RegisterService;
 use E04\Bundle\Services\SessionService;
+use E05\Bundle\Services\ReputationService;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -34,6 +35,8 @@ class DefaultController extends Controller
         $sessionService = $this->get('E04.SessionService');
         $lastRequest = $sessionService->getSecondsSinceLastRequest($request, $user);
         $anonymousName = $sessionService->getAnonymousName($request, $lastRequest, $user);
+        $reputationService = $this->get('E05.reputationService');
+        $reputation = $reputationService->getUserReputation($user);
 
         $posts = $this->getDoctrine()
               ->getRepository(Post::class)
@@ -44,6 +47,7 @@ class DefaultController extends Controller
             'posts' => $posts,
             'anonymousName' => $anonymousName,
             'secondsSinceLastRequest' => $lastRequest,
+            'reputation' => $reputation,
         ]);
     }
 }

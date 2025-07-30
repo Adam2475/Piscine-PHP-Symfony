@@ -15,3 +15,6 @@ services:
     E04.SessionService:
         class: E04\Bundle\Services\SessionService
         #arguments: ['@form.factory']
+
+    E05.ReputationService:
+        class: E05\Bundle\Services\ReputationService

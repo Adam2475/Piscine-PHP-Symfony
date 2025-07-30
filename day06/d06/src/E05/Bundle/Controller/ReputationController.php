@@ -72,5 +72,4 @@ class ReputationController extends Controller
         $this->addFlash('success', 'dislike given');
         return $this->redirectToRoute('post_show', ['id' => $id]);
     }
-
 }
