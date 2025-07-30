@@ -9,7 +9,8 @@
             "E01\\Bundle\\": "src/E01/Bundle",
             "E02\\Bundle\\": "src/E02/Bundle",
             "E03\\Bundle\\": "src/E03/Bundle",
-            "E04\\Bundle\\": "src/E04/Bundle"
+            "E04\\Bundle\\": "src/E04/Bundle",
+            "E05\\Bundle\\": "src/E05/Bundle"
         },
         "classmap": [ "app/AppKernel.php", "app/AppCache.php" ]
     },

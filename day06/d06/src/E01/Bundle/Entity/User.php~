@@ -2,6 +2,10 @@
 
 namespace E01\Bundle\Entity;
 
+// importing security interface
+use Symfony\Component\Security\Core\User\UserInterface;
+use E03\Bundle\Entity\Post;
+
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -10,7 +14,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="user")
  * @ORM\Entity(repositoryClass="E01\Bundle\Repository\UserRepository")
  */
-class User
+class User implements UserInterface
 {
     /**
      * @var int
@@ -42,6 +46,22 @@ class User
      */
     private $email;
 
+    /**
+     * @ORM\Column(type="json_array")
+     */
+    private $roles = [];
+
+    /**
+     * @var integer
+     * 
+     * @ORM\Column(name="reputation", type="integer") 
+     */
+    private $reputation;
+
+    /**
+     *@ORM\OneToMany(targetEntity="E03\Bundle\Entity\Post", mappedBy="author", cascade={"persist", "remove"})
+     */
+    private $posts;
 
     /**
      * Get id
@@ -124,5 +144,105 @@ class User
     {
         return $this->email;
     }
-}
 
+    // public function getRoles()
+    // {
+    //     return $this->roles;
+    // }
+
+    public function setRoles(array $roles)
+    {
+        $this->roles = $roles;
+    }
+
+    public function addRole($role)
+    {
+        if (!in_array($role, $this->roles)) {
+            $this->roles[] = strtoupper($role);
+        }
+    }
+
+    // public function getRoles()
+    // {
+    //     return ['ROLE_USER']; // or any roles you assign
+    // }
+    public function getRoles()
+    {
+        return $this->roles ?: ['ROLE_USER'];
+    }
+
+    public function getSalt()
+    {
+        return null; // bcrypt/sodium don't need salt
+    }
+
+    public function eraseCredentials()
+    {
+        // If you store any temporary sensitive data, clear it here
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->posts = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Set reputation
+     *
+     * @param integer $reputation
+     *
+     * @return User
+     */
+    public function setReputation($reputation)
+    {
+        $this->reputation = $reputation;
+
+        return $this;
+    }
+
+    /**
+     * Get reputation
+     *
+     * @return integer
+     */
+    public function getReputation()
+    {
+        return $this->reputation;
+    }
+
+    /**
+     * Add post
+     *
+     * @param \E03\Bundle\Entity\Post $post
+     *
+     * @return User
+     */
+    public function addPost(\E03\Bundle\Entity\Post $post)
+    {
+        $this->posts[] = $post;
+
+        return $this;
+    }
+
+    /**
+     * Remove post
+     *
+     * @param \E03\Bundle\Entity\Post $post
+     */
+    public function removePost(\E03\Bundle\Entity\Post $post)
+    {
+        $this->posts->removeElement($post);
+    }
+
+    /**
+     * Get posts
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getPosts()
+    {
+        return $this->posts;
+    }
+}

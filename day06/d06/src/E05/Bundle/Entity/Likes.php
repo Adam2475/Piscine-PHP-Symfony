@@ -1,0 +1,94 @@
+<?php
+
+namespace E05\Bundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Likes
+ *
+ * @ORM\Table(name="likes")
+ * @ORM\Entity(repositoryClass="E05\Bundle\Repository\LikesRepository")
+ */
+class Likes
+{
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="E01\Bundle\Entity\User")
+     * @ORM\JoinColumn(nullable=false, onDelete="CASCADE")
+     */
+    private $user;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="E03\Bundle\Entity\Post", inversedBy="likes")
+     * @ORM\JoinColumn(nullable=false, onDelete="CASCADE")
+     */
+    private $post;
+
+
+    /**
+     * Get id
+     *
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set user
+     *
+     * @param string $user
+     *
+     * @return Likes
+     */
+    public function setUser($user)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return string
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
+
+    /**
+     * Set post
+     *
+     * @param string $post
+     *
+     * @return Likes
+     */
+    public function setPost($post)
+    {
+        $this->post = $post;
+
+        return $this;
+    }
+
+    /**
+     * Get post
+     *
+     * @return string
+     */
+    public function getPost()
+    {
+        return $this->post;
+    }
+}

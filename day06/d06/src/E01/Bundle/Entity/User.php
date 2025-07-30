@@ -46,12 +46,17 @@ class User implements UserInterface
      */
     private $email;
 
-
     /**
      * @ORM\Column(type="json_array")
      */
     private $roles = [];
 
+    /**
+     * @var integer
+     * 
+     * @ORM\Column(name="reputation", type="integer") 
+     */
+    private $reputation;
 
     /**
      *@ORM\OneToMany(targetEntity="E03\Bundle\Entity\Post", mappedBy="author", cascade={"persist", "remove"})
@@ -174,5 +179,70 @@ class User implements UserInterface
     public function eraseCredentials()
     {
         // If you store any temporary sensitive data, clear it here
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->posts = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Set reputation
+     *
+     * @param integer $reputation
+     *
+     * @return User
+     */
+    public function setReputation($reputation)
+    {
+        $this->reputation = $reputation;
+
+        return $this;
+    }
+
+    /**
+     * Get reputation
+     *
+     * @return integer
+     */
+    public function getReputation()
+    {
+        return $this->reputation;
+    }
+
+    /**
+     * Add post
+     *
+     * @param \E03\Bundle\Entity\Post $post
+     *
+     * @return User
+     */
+    public function addPost(\E03\Bundle\Entity\Post $post)
+    {
+        $this->posts[] = $post;
+
+        return $this;
+    }
+
+    /**
+     * Remove post
+     *
+     * @param \E03\Bundle\Entity\Post $post
+     */
+    public function removePost(\E03\Bundle\Entity\Post $post)
+    {
+        $this->posts->removeElement($post);
+    }
+
+    /**
+     * Get posts
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getPosts()
+    {
+        return $this->posts;
     }
 }

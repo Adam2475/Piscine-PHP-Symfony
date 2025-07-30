@@ -1,10 +1,24 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
+
+    {% for label, flashes in app.session.flashbag.all %}
+        {% for message in flashes %}
+            {{ message }}
+        {% endfor %}
+    {% endfor %}
+
+
     <h1>{{ post.title }}</h1>
     <p>{{ post.content }}</p>
     <p><small>Created: {{ post.created|date('Y-m-d H:i') }}</small></p>
     <p>Author: {{ post.author.username }}</p>
 
+    <p> likes: {{ post.likes | length }} </p>
+    <button><a href="like/{{id}}"> like </a></button>
+    <p> dislikes: {{ post.dislikes | length }} </p>
+    <button><a href="dislike/{{id}}"> dislike </a></button>
+    <br>
+    <br>
     <a href="{{ path('homepage') }}">Back to homepage</a>
 {% endblock %}

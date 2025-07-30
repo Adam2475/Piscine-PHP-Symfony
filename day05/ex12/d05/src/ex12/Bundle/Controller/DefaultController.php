@@ -20,7 +20,6 @@ class DefaultController extends Controller
         $sortOrder = strtoupper($request->query->get('sortOrder', 'ASC'));
         $sortField = $request->query->get('sortField', 'name');
 
-        // Validate inputs
         $allowedFields = ['name', 'birthdate'];
         if (!in_array($sortField, $allowedFields)) {
             $sortField = 'name';
@@ -34,9 +33,6 @@ class DefaultController extends Controller
         $persons = $this->getDoctrine()
             ->getRepository('ex12Bundle:persons')
             ->findWithRelationsAndFilter($birthdateFilter, $sortField, $sortOrder);
-
-        // var_dump($persons);
-        // exit;
 
         return $this->render('ex12Bundle:Default:index.html.twig', [
             'persons' => $persons,

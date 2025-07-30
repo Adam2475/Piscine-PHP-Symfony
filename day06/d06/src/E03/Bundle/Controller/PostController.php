@@ -33,6 +33,7 @@ class PostController extends Controller
 
         return $this->render('@E03/post/show.html.twig', [
             'post' => $post,
+            'id' => $id,
         ]);
     }
 
