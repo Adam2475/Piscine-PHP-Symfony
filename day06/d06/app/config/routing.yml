@@ -1,3 +1,8 @@
+e06:
+    resource: "@E06Bundle/Controller/"
+    type:     annotation
+    prefix:   /
+
 e05:
     resource: "@E05Bundle/Controller/"
     type:     annotation

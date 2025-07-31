@@ -22,6 +22,7 @@ class AppKernel extends Kernel
             new E02\Bundle\E02Bundle(),
             new E04\Bundle\E04Bundle(),
             new E05\Bundle\E05Bundle(),
+            new E06\Bundle\E06Bundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'), true)) {

@@ -45,6 +45,18 @@ class Post
     private $created;
 
     /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="lastEdit", type="datetime", nullable=true)
+     */
+    private $lastEdit;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="E01\Bundle\Entity\User")
+     */
+    private $lastEditedBy;
+
+    /**
      * @var string
      *
      * @ORM\ManyToOne(targetEntity="E01\Bundle\Entity\User", inversedBy="posts")
@@ -271,5 +283,53 @@ class Post
     public function removeDislike(\E05\Bundle\Entity\Dislikes $dislike)
     {
         $this->dislikes->removeElement($dislike);
+    }
+
+    /**
+     * Set lastEdit
+     *
+     * @param \DateTime $lastEdit
+     *
+     * @return Post
+     */
+    public function setLastEdit($lastEdit)
+    {
+        $this->lastEdit = $lastEdit;
+
+        return $this;
+    }
+
+    /**
+     * Get lastEdit
+     *
+     * @return \DateTime
+     */
+    public function getLastEdit()
+    {
+        return $this->lastEdit;
+    }
+
+    /**
+     * Set lastEditedBy
+     *
+     * @param \E01\Bundle\Entity\User $lastEditedBy
+     *
+     * @return Post
+     */
+    public function setLastEditedBy(\E01\Bundle\Entity\User $lastEditedBy = null)
+    {
+        $this->lastEditedBy = $lastEditedBy;
+
+        return $this;
+    }
+
+    /**
+     * Get lastEditedBy
+     *
+     * @return \E01\Bundle\Entity\User
+     */
+    public function getLastEditedBy()
+    {
+        return $this->lastEditedBy;
     }
 }

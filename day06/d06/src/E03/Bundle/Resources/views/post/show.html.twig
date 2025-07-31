@@ -20,5 +20,12 @@
     <button><a href="dislike/{{id}}"> dislike </a></button>
     <br>
     <br>
+    <button><a href="edit/{{id}}"> edit post</a></button>
+
+    {% if post.lastEdit and post.lastEditedBy %}
+    <p><small>
+        Last edited by {{ post.lastEditedBy.username }} on {{ post.lastEdit|date('Y-m-d H:i') }}
+        </small></p>
+    {% endif %}
     <a href="{{ path('homepage') }}">Back to homepage</a>
 {% endblock %}

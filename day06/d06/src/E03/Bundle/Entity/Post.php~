@@ -45,6 +45,18 @@ class Post
     private $created;
 
     /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="lastEdit", type="datetime", nullable=true)
+     */
+    private $lastEdit;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="E01\Bundle\Entity\User")
+     */
+    private $lastEditedBy;
+
+    /**
      * @var string
      *
      * @ORM\ManyToOne(targetEntity="E01\Bundle\Entity\User", inversedBy="posts")
@@ -215,5 +227,85 @@ class Post
     public function getDislikes()
     {
         return $this->dislikes;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->likes = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->dislikes = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add like
+     *
+     * @param \E05\Bundle\Entity\Likes $like
+     *
+     * @return Post
+     */
+    public function addLike(\E05\Bundle\Entity\Likes $like)
+    {
+        $this->likes[] = $like;
+
+        return $this;
+    }
+
+    /**
+     * Remove like
+     *
+     * @param \E05\Bundle\Entity\Likes $like
+     */
+    public function removeLike(\E05\Bundle\Entity\Likes $like)
+    {
+        $this->likes->removeElement($like);
+    }
+
+    /**
+     * Add dislike
+     *
+     * @param \E05\Bundle\Entity\Dislikes $dislike
+     *
+     * @return Post
+     */
+    public function addDislike(\E05\Bundle\Entity\Dislikes $dislike)
+    {
+        $this->dislikes[] = $dislike;
+
+        return $this;
+    }
+
+    /**
+     * Remove dislike
+     *
+     * @param \E05\Bundle\Entity\Dislikes $dislike
+     */
+    public function removeDislike(\E05\Bundle\Entity\Dislikes $dislike)
+    {
+        $this->dislikes->removeElement($dislike);
+    }
+
+    /**
+     * Set lastEdit
+     *
+     * @param \DateTime $lastEdit
+     *
+     * @return Post
+     */
+    public function setLastEdit($lastEdit)
+    {
+        $this->lastEdit = $lastEdit;
+
+        return $this;
+    }
+
+    /**
+     * Get lastEdit
+     *
+     * @return \DateTime
+     */
+    public function getLastEdit()
+    {
+        return $this->lastEdit;
     }
 }

@@ -8,6 +8,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use E03\Bundle\Entity\Post;
+use E06\Bundle\Form\PostType;
 
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
@@ -47,11 +48,8 @@ class PostController extends Controller
         $post->setCreated(new \DateTime());
         $post->setAuthor($this->getUser());
 
-        $form = $this->createFormBuilder($post)
-            ->add('title', TextType::class)
-            ->add('content', TextareaType::class)
-            ->add('save', SubmitType::class, ['label' => 'Create Post'])
-            ->getForm();
+        // using FormType of E06
+        $form = $this->createForm(new PostType(), $post);
 
         $form->handleRequest($request);
 
