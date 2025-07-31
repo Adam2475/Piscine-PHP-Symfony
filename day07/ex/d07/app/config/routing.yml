@@ -6,3 +6,8 @@
 # app:
 #     resource: '@AppBundle/Controller/'
 #     type: annotation
+
+d07:
+    resource: "@D07Bundle/Controller/"
+    type:     annotation
+    #prefix:   /
